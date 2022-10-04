@@ -43,7 +43,9 @@ https://prudentialcarrental-prucarbooking.azuremicroservices.io/swagger-ui.html
 ## Endpoints
 
 1. register user (/users) - HTTP POST
+  ```
   https://prudentialcarrental-prucarbooking.azuremicroservices.io/users
+  ```
 - Sample Request - body
 
 ```
@@ -65,7 +67,9 @@ https://prudentialcarrental-prucarbooking.azuremicroservices.io/swagger-ui.html
 ```
 
 2. register car (/cars) - HTTP POST
+  ```
    https://prudentialcarrental-prucarbooking.azuremicroservices.io/users
+  ``` 
 - Sample Request - body
 
 ```
@@ -93,7 +97,10 @@ https://prudentialcarrental-prucarbooking.azuremicroservices.io/swagger-ui.html
 ```
 
 3. search cars availability (/cars) - HTTP GET
-   https://prudentialcarrental-prucarbooking.azuremicroservices.io//cars?maxPricePerHour=100&page=0&pageSize=5&rentFrom=2022-10-05T21%3A00&rentTo=2021-10-30T21%3A00
+  ```
+   https://prudentialcarrental-prucarbooking.azuremicroservices.io/cars?maxPricePerHour=100&page=0&pageSize=5&rentFrom=2022-10-05T21%3A00&rentTo=2021-10-30T21%3A00
+   ```
+   
 - Sample Request - body
 
 ```
@@ -128,7 +135,9 @@ https://prudentialcarrental-prucarbooking.azuremicroservices.io/swagger-ui.html
 ```
 
 5. create booking (/bookings) - HTTP POST
-
+   ```
+   https://prudentialcarrental-prucarbooking.azuremicroservices.io/bookings
+   ```
 - Sample Request - body
 
 ```
