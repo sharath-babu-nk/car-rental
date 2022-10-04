@@ -8,7 +8,7 @@
 		<version>2.7.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.infor.m3</groupId>
+	<groupId>com.prudential.carrental</groupId>
 	<artifactId>car-rental-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>car-rental-service</name>
