@@ -36,12 +36,14 @@ java -jar target/car-rental-service-0.0.1-SNAPSHOT.jar
 
 ```bash
 http://localhost:8080
+Or
+https://prudentialcarrental-prucarbooking.azuremicroservices.io/swagger-ui.html
 ```
 
 ## Endpoints
 
 1. register user (/users) - HTTP POST
-
+  https://prudentialcarrental-prucarbooking.azuremicroservices.io/users
 - Sample Request - body
 
 ```
@@ -56,23 +58,23 @@ http://localhost:8080
 ```
 {
   "id": 1,
-  "created": "2022-10-03T02:07:47.07",
+  "created": "2022-10-05T02:07:47.07",
   "name": "Sharath Babu",
   "email": "sharathbabu1323@gmail.com"
 }
 ```
 
 2. register car (/cars) - HTTP POST
-
+   https://prudentialcarrental-prucarbooking.azuremicroservices.io/users
 - Sample Request - body
 
 ```
 {
-  "model": "BMW - X6",
+  "model": "BMW 650",
   "plateNumber": "AWE2443",
   "year": 2019,
-  "availableFrom": "2022-15-19T21:00",
-  "availableTo": "2022-10-20T21:00",
+  "availableFrom": "2022-10-05T21:00",
+  "availableTo": "2022-10-30T21:00",
   "pricePerHour": 10
 }
 ```
@@ -82,20 +84,20 @@ http://localhost:8080
 ```
 {
   "id": 1,
-  "created": "2021-01-25T02:09:32.519",
+  "created": "2022-10-05T02:09:32.519",
   "plateNumber": "AWE2443",
-  "model": "BMW - X6",
+  "model": "BMW  650",
   "year": 2019,
   
 }
 ```
 
-3search cars availability (/cars) - HTTP GET
-
+3. search cars availability (/cars) - HTTP GET
+   https://prudentialcarrental-prucarbooking.azuremicroservices.io//cars?maxPricePerHour=100&page=0&pageSize=5&rentFrom=2022-10-05T21%3A00&rentTo=2021-10-30T21%3A00
 - Sample Request - body
 
 ```
-/cars?maxPricePerHour=100&page=0&pageSize=5&rentFrom=2021-07-17T21%3A00&rentTo=2021-07-25T21%3A00
+/cars?maxPricePerHour=100&page=0&pageSize=5&rentFrom=2022-10-05T21%3A00&rentTo=2022-10-30T21%3A00
 ```
 
 - Sample Response
@@ -104,23 +106,23 @@ http://localhost:8080
 [
   {
     "id": 2,
-    "created": "2022-10-02T02:22:33.009",
+    "created": "2022-10-05T02:22:33.009",
     "plateNumber": "34DS3",
-    "model": "Volvo",
+    "model": "Toyota Camry",
     "year": 2005,
     "pricePerHour": 10,
-    "availabeFrom": "2022-10-20T21:00:00",
-    "availabeTo": "2022-10-21T21:00:00"
+    "availabeFrom": "2022-10-05T21:00:00",
+    "availabeTo": "2022-10-30T21:00:00"
   },
   {
     "id": 1,
-    "created": "2022-10-25T02:15:30.827",
+    "created": "2022-10-05T02:15:30.827",
     "plateNumber": "AWE2443",
-    "model": "BMW - X6",
+    "model": "BMW - 650",
     "year": 2019,
     "pricePerHour": 10,
-    "availabeFrom": "2022-05-26T21:00:00",
-    "availabeTo": "2022-10-27T21:00:00"
+    "availabeFrom": "2022-10-05T21:00:00",
+    "availabeTo": "2022-10-30T21:00:00"
   }
 ]
 ```
@@ -133,8 +135,8 @@ http://localhost:8080
 {
   "carId": 1,
   "userId": 1,
-  "beginning": "2022-10-04T21:00",
-  "end": "2021-10-05T21:00"  
+  "beginning": "2022-10-06T21:00",
+  "end": "2021-10-07T21:00"  
 }
 ```
 
@@ -143,9 +145,9 @@ http://localhost:8080
 ```
 {
   "id": 1,
-  "created": "2022-10-03T02:25:07.536",
-  "beginning": "2022-10-04T21:00:00",
-  "end": "2022-10-05T21:00:00",
+  "created": "2022-10-5T02:25:07.536",
+  "beginning": "2022-10-06T21:00:00",
+  "end": "2022-10-07T21:00:00",
   "user": {
     "id": 1,
     "name": "Sharath Babu",
@@ -154,7 +156,7 @@ http://localhost:8080
   "car": {
     "id": 1,
     "plateNumber": "AWE2443",
-    "model": "BMW - X6",
+    "model": "BMW 650",
     "year": 2019
   }
 }
