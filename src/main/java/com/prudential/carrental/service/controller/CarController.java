@@ -7,18 +7,11 @@ import javax.validation.Valid;
 
 import com.prudential.carrental.service.application.service.CarService;
 import com.prudential.carrental.service.dto.CarDTO;
+import com.prudential.carrental.service.dto.UpdateCarAvailabilitDTO;
 import com.prudential.carrental.service.exception.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -53,6 +46,16 @@ public class CarController {
 		log.debug("Called CarController.searchCars with parameters :{}, {}, {}", rentFrom, rentTo, maxPricePerHour);
 
 		return carService.searchCars(rentFrom, rentTo, maxPricePerHour, page, pageSize);
+	}
+
+	@PutMapping("/availability/{carId}")
+	public CarDTO updateCarAvailability(@PathVariable long carId,
+										@Valid @RequestBody UpdateCarAvailabilitDTO updateCarAvailabilitDTO)
+			throws EntityNotFoundException, DatesNotValidException, CarHasCurrentBookings, DateFormatNotValidException {
+
+		log.debug("Called CarController.updateCarAvailability car ID :{}", carId);
+
+		return carService.updateCarAvailability(carId, updateCarAvailabilitDTO);
 	}
 
 }

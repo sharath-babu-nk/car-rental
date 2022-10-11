@@ -75,5 +75,14 @@ public interface CarDomainService {
 	 */
 	boolean isAvailableWithinRentPeriod(Car car, LocalDateTime rentFrom, LocalDateTime rentTo);
 
+	/**
+	 * check if the bookings of the car will fit within the new availability
+	 *
+	 * @param car the car
+	 * @param rentFrom required date from
+	 * @param rentTo required date to
+	 *
+	 */
+	boolean isBookingsFitTheNewAvailability(Car car, LocalDateTime availableFrom, LocalDateTime availableTo);
 
 }

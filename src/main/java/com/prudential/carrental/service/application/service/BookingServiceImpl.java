@@ -69,6 +69,10 @@ public class BookingServiceImpl implements BookingService {
 		// create booking for user and car
 		Booking booking = bookingDomainService.create(new Booking(beginningDateTime, endDateTime, user, car));
 
+		//Update available from Car to after rent endDateTime.
+		car.setAvailableFrom(endDateTime);
+		carDomainService.createOrUpdate(car);
+
 		return conversionService.convert(booking, BookingDTO.class);
 	}
 

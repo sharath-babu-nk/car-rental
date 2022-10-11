@@ -7,6 +7,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.validation.constraints.NotNull;
+
+import com.prudential.carrental.service.domain.entity.Booking;
 import com.prudential.carrental.service.domain.entity.Car;
 import com.prudential.carrental.service.domain.repository.CarRepository;
 import com.prudential.carrental.service.exception.EntityNotFoundException;
@@ -85,5 +87,26 @@ public class CarDomainServiceImpl implements CarDomainService {
 	
 	private boolean isDateTimeWithinPeriod(LocalDateTime dateTime, LocalDateTime rentFrom, LocalDateTime rentTo) {
 		return dateTime.compareTo(rentFrom) >= 0 && dateTime.compareTo(rentTo) <= 0;
+	}
+
+	private boolean isWithinPeriod(LocalDateTime dateTime, LocalDateTime rentFrom, LocalDateTime rentTo) {
+		return rentFrom.compareTo(dateTime) >= 0 && dateTime.compareTo(rentTo) <= 0;
+	}
+
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Transactional
+	@Override
+	public boolean isBookingsFitTheNewAvailability(Car car, LocalDateTime availableFrom, LocalDateTime availableTo) {
+		List<Booking> bookings = car.getBookings();
+		for (Booking booking : bookings) {
+			if (!isWithinPeriod(booking.getBeginning(), availableFrom, availableTo)
+					|| !isWithinPeriod(booking.getEnd(), availableFrom, availableTo)) {
+				return false;
+			}
+		}
+		return true;
 	}
 }

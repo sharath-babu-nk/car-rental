@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import com.prudential.carrental.service.domain.entity.Car;
 import com.prudential.carrental.service.domain.service.CarDomainService;
 import com.prudential.carrental.service.dto.CarDTO;
+import com.prudential.carrental.service.dto.UpdateCarAvailabilitDTO;
 import com.prudential.carrental.service.exception.*;
 import com.prudential.carrental.service.util.Utilities;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,5 +74,32 @@ public class CarServiceImpl implements CarService {
 
 		return carDomainService.findCarsAvailability(rentFromDateTime, rentToDateTime, maxPricePerHour, page, pageSize)
 				.stream().map(car -> conversionService.convert(car, CarDTO.class)).collect(Collectors.toList());
+	}
+
+	@Override
+	public CarDTO updateCarAvailability(@NotNull Long carId, UpdateCarAvailabilitDTO updateCarAvailabilitDTO)
+			throws EntityNotFoundException, DatesNotValidException, CarHasCurrentBookings, DateFormatNotValidException {
+
+		Car car = carDomainService.getById(carId);
+
+		LocalDateTime availableFrom = Utilities.toLocalDateTime(updateCarAvailabilitDTO.getAvailableFrom());
+		LocalDateTime availableTo = Utilities.toLocalDateTime(updateCarAvailabilitDTO.getAvailableTo());
+
+		if (!Utilities.isValidDates(availableFrom, availableTo)) {
+			log.debug("Provided dates are not valid! date from: {}, date to: {}", availableFrom, availableTo);
+			throw new DatesNotValidException("Provided dates are not valid!");
+		}
+
+		if (!carDomainService.isBookingsFitTheNewAvailability(car, availableFrom, availableTo)) {
+			log.debug("Car has bookings within the old availability! date from: {}, date to: {}", availableFrom,
+					availableFrom);
+			throw new CarHasCurrentBookings("Car has bookings within the old availability!");
+		}
+
+		car.setAvailableFrom(availableFrom);
+		car.setAvailableTo(availableTo);
+		car.setPricePerHour(updateCarAvailabilitDTO.getPricePerHour());
+
+		return conversionService.convert(carDomainService.createOrUpdate(car), CarDTO.class);
 	}
 }

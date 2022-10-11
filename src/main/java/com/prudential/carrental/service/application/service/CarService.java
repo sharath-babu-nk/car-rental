@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 
 import com.prudential.carrental.service.dto.CarDTO;
+import com.prudential.carrental.service.dto.UpdateCarAvailabilitDTO;
 import com.prudential.carrental.service.exception.*;
 
 /**
@@ -19,5 +20,8 @@ public interface CarService {
 
 	List<CarDTO> searchCars(@NotNull String rentFrom, @NotNull String rentTo, @NotNull BigDecimal maxPricePerHour,
 			@NotNull Integer page, @NotNull Integer pageSize) throws DatesNotValidException, DateFormatNotValidException;
+
+	CarDTO updateCarAvailability(@NotNull Long carId, @NotNull UpdateCarAvailabilitDTO updateCarAvailabilitDTO)
+			throws EntityNotFoundException, DatesNotValidException, CarHasCurrentBookings, DateFormatNotValidException;
 
 }
