@@ -98,7 +98,7 @@ https://prudentialcarrental-prucarbooking.azuremicroservices.io/swagger-ui.html
 3. update car availability (/cars/availability/{carId}) - HTTP PUT
 ```
 https://prudentialcarrental-prucarbooking.azuremicroservices.io//cars/availability/1
-
+```
 - Sample Request (/cars/availability/1) - body
 ```
 {
