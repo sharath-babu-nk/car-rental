@@ -95,8 +95,28 @@ https://prudentialcarrental-prucarbooking.azuremicroservices.io/swagger-ui.html
   
 }
 ```
+3. update car availability (/cars/availability/{carId}) - HTTP PUT
+- Sample Request (/cars/availability/1) - body
+```
+{
+  "availableFrom": "2022-10-13T21:00",
+  "availableTo": "2022-10-30T21:00",
+  "pricePerHour": 10
+}
+- Sample Response
+```
+{
+    "id": 1,
+    "created": "2022-10-04T11:41:37.29",
+    "plateNumber": "AWE2443",
+    "model": "BMW - X6",
+    "year": 2019,
+    "pricePerHour": 10,
+    "availableFrom": "2022-10-13T21:00:00",
+    "availableTo": "2022-10-30T21:00:00"
+}
 
-3. search cars availability (/cars) - HTTP GET
+4. search cars availability (/cars) - HTTP GET
   ```
    https://prudentialcarrental-prucarbooking.azuremicroservices.io/cars?maxPricePerHour=100&page=0&pageSize=5&rentFrom=2022-10-05T21%3A00&rentTo=2021-10-30T21%3A00
    ```
