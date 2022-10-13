@@ -106,6 +106,8 @@ https://prudentialcarrental-prucarbooking.azuremicroservices.io//cars/availabili
   "availableTo": "2022-10-30T21:00",
   "pricePerHour": 10
 }
+```
+
 - Sample Response
 ```
 {
@@ -118,7 +120,7 @@ https://prudentialcarrental-prucarbooking.azuremicroservices.io//cars/availabili
     "availableFrom": "2022-10-13T21:00:00",
     "availableTo": "2022-10-30T21:00:00"
 }
-
+```
 4. search cars availability (/cars) - HTTP GET
   ```
    https://prudentialcarrental-prucarbooking.azuremicroservices.io/cars?maxPricePerHour=100&page=0&pageSize=5&rentFrom=2022-10-05T21%3A00&rentTo=2021-10-30T21%3A00
