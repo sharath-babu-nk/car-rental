@@ -68,7 +68,7 @@ https://prudentialcarrental-prucarbooking.azuremicroservices.io/swagger-ui.html
 
 2. register car (/cars) - HTTP POST
   ```
-   https://prudentialcarrental-prucarbooking.azuremicroservices.io/users
+   https://prudentialcarrental-prucarbooking.azuremicroservices.io/cars
   ``` 
 - Sample Request - body
 
